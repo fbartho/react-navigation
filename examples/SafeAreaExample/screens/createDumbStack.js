@@ -4,6 +4,7 @@ import {
   Dimensions,
   Button,
   Platform,
+  SafeAreaView,
   ScrollView,
   Text,
   View,
@@ -37,6 +38,7 @@ export default (navigationOptions = {}) => {
     static navigationOptions = {
       title: 'Title!',
       ...navigationOptions,
+      header: null,
       headerStyle: {
         backgroundColor: '#6b52ae',
         ...navigationOptions.headerStyle,
@@ -49,13 +51,22 @@ export default (navigationOptions = {}) => {
 
     render() {
       return (
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView
+          style={{
+            flex: 1,
+          }}
+        >
+          <SafeAreaView>
+            <Button onPress={this._goBack} title="I am a teapot" />
+          </SafeAreaView>
+
           <View
             style={{
               paddingTop: 30,
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+          >
             <Button onPress={this._goBack} title="Go back" />
             <Separator />
             <Button onPress={this._setPortrait} title="Set portrait" />
